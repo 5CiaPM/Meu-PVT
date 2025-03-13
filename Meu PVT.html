@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu PVT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h2 {
+            color: #d32f2f;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #d32f2f;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b71c1c;
+        }
+        .declaration {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Meu PVT</h2>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" placeholder="Digite seu nome">
+        
+        <label for="re">RE:</label>
+        <input type="text" id="re" placeholder="Digite seu RE">
+        
+        <label for="itens">Unidade:</label>
+        <select id="itens">
+            <option value="5ªCia">5ªCia</option>
+            <option value="Pel">Pel</option>
+            <option value="1ºGP">1ºGP</option>
+            <option value="2ºGP">2ºGP</option>
+            <option value="ADM">ADM</option>
+        </select>
+        
+        <label for="mes">PVT Mês:</label>
+        <select id="mes">
+            <option value="Janeiro">Janeiro</option>
+            <option value="Fevereiro">Fevereiro</option>
+            <option value="Março">Março</option>
+            <option value="Abril">Abril</option>
+            <option value="Maio">Maio</option>
+            <option value="Junho">Junho</option>
+            <option value="Julho">Julho</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Setembro">Setembro</option>
+            <option value="Outubro">Outubro</option>
+            <option value="Novembro">Novembro</option>
+            <option value="Dezembro">Dezembro</option>
+        </select>
+        
+        <p class="declaration">Declaro que efetuei o PVT referente ao mês indicado acima.</p>
+        
+        <button onclick="enviarEmail()">Enviar</button>
+    </div>
+    
+    <script>
+        function enviarEmail() {
+            var nome = document.getElementById('nome').value;
+            var re = document.getElementById('re').value;
+            var itens = document.getElementById('itens').value;
+            var mes = document.getElementById('mes').value;
+            
+            if (!nome || !re) {
+                alert("Por favor, preencha todos os campos!");
+                return;
+            }
+            
+            var assunto = encodeURIComponent("PVT - " + nome);
+            var corpo = encodeURIComponent("Nome: " + nome + "\nRE: " + re + "\nUnidade: " + itens + "\nPVT Mês: " + mes + "\n\nDeclaro que efetuei o PVT referente ao mês indicado acima.");
+            
+            window.location.href = "mailto:2bpmi5cia@policiamilitar.sp.gov.br?subject=" + assunto + "&body=" + corpo;
+        }
+    </script>
+</body>
+</html>
